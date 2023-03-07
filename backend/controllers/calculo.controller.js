@@ -14,28 +14,44 @@ var controller={
         //return res.status(200).send({resultado:num1+num2});
     },
     resta:function(req,res){
-        var params=req.params;
+        console.log("RESTA BACK");
+        var params=req.params.calculos;
+        var campos=params.split(',');
         //var num1 = parseFloat(params.num1);
         //var num2 = parseFloat(params.num2);
-
-        console.log(params);
+        var num1=parseInt(campos[0]);
+        var num2=parseInt(campos[1]);
+        
+        console.log(num1-num2);
     },
     producto:function(req,res){
-        var params=req.params;
-        console.log("PRODUCTO");
+        var params=req.body;
+        var num1 = parseFloat(params.num1);
+        var num2 = parseFloat(params.num2);
+        console.log(num1*num2);
     },
     division:function(req,res){
-        var params=req.params;
-        console.log("DIVISION");
+        var params=req.params.calculos;
+        var campos=params.split(',');
+        var num1 = parseFloat(params.num1);
+        var num2 = parseFloat(params.num2);
+        var num1=parseInt(campos[0]);
+        var num2=parseInt(campos[1]);
+        
+        console.log(num1/num2);
     },
     potencia:function(req,res){
-        var params=req.params;
-        console.log("POTENCIA");
+        var params=req.body;
+        var num1 = parseFloat(params.num1);
+        var num2 = parseFloat(params.num2);
+        console.log(Math.pow(num1,num2));
     },
     sqrt:function(req,res){
-        var params=req.params;
-        console.log("SQRT");
-    }
+        var params=req.body;
+        var num1 = parseFloat(params.num1);
+        var num2 = parseFloat(params.num2);
+        console.log(num1**(1/2));
+    },
 }
 
 module.exports=controller;

@@ -24,11 +24,39 @@ post(calculo:Calculo):Observable<any>{
     //headers.set('params',campos);
     return this._http.post(this.url,params,{headers:headers});
 }
-get(campo:string):Observable<any>{
+get(cadena:string):Observable<any>{
     //let params=JSON.stringify(calculo);
     //console.log(params);
     let headers=new HttpHeaders().set('Content-Type','application/json');
     //headers.set('params',campos);
-    return this._http.get(this.url+campo,{headers:headers});
+    return this._http.get(this.url+cadena,{headers:headers});
+}
+put(calculo:Calculo):Observable<any>{
+    let params=JSON.stringify(calculo);
+    //console.log(params);
+    let headers=new HttpHeaders().set('Content-Type','application/json');
+    //headers.set('params',campos);
+    return this._http.put(this.url,params,{headers:headers});
+}
+delete(cadena:string):Observable<any>{
+    //let params=JSON.stringify(calculo);
+    //console.log(params);
+    let headers=new HttpHeaders().set('Content-Type','application/json');
+    //headers.set('params',campos);
+    return this._http.delete(this.url+cadena,{headers:headers});
+}
+potencia(calculo:Calculo):Observable<any>{
+    let params=JSON.stringify(calculo);
+    //console.log(params);
+    let headers=new HttpHeaders().set('Content-Type','application/json');
+    //headers.set('params',campos);
+    return this._http.post(this.url+"potencia",params,{headers:headers});
+}
+patch(calculo:Calculo):Observable<any>{
+    let params=JSON.stringify(calculo);
+    //console.log(params);
+    let headers=new HttpHeaders().set('Content-Type','application/json');
+    //headers.set('params',campos);
+    return this._http.patch(this.url,params,{headers:headers});
 }
 }

@@ -17,7 +17,7 @@ export class AppComponent {
   ){
     this.calculo=new Calculo(0,0);
     //this.post();
-    this.get();
+    //this.get();
   }
   post(){
     this._calcuService.post(this.calculo).subscribe(
@@ -32,6 +32,47 @@ export class AppComponent {
   get(){
     var cadena=this.calculo.num1.toString()+","+this.calculo.num2.toString();
     this._calcuService.get(cadena).subscribe(
+      response=>{
+        console.log(response);
+      }
+      ,error=>{
+        console.log(<any>error);
+      }
+    );
+  }
+  put(){
+    this._calcuService.put(this.calculo).subscribe(
+      response=>{
+        console.log(response);
+      }
+      ,error=>{
+        console.log(<any>error);
+      }
+    );
+  }
+  delete(){
+    var cadena=this.calculo.num1.toString()+","+this.calculo.num2.toString();
+    this._calcuService.delete(cadena).subscribe(
+      response=>{
+        console.log(response);
+      }
+      ,error=>{
+        console.log(<any>error);
+      }
+    );
+  }
+  potencia(){
+    this._calcuService.put(this.calculo).subscribe(
+      response=>{
+        console.log(response);
+      }
+      ,error=>{
+        console.log(<any>error);
+      }
+    );
+  }
+  patch(){
+    this._calcuService.patch(this.calculo).subscribe(
       response=>{
         console.log(response);
       }
