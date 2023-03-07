@@ -1,18 +1,25 @@
 
 <div class="container text-center">
   <h1>REGISTRO DE DATOS</h1>
-  <form name="calcuForm" #calcuForm="ngForm" (ngSubmit)="potencia()">
+  <form name="calcuForm" #calcuForm="ngForm" (ngSubmit)="doOperacion()">
     <p>
       <span></span>
       <input type="text" name="num1" #num1="ngModel" [(ngModel)]="calculo.num1">
     </p>
-    <h1><b>+</b></h1>
+    <h1><b>{{operacion}}</b></h1>
     <p>
       <span></span>
       <input type="text" name="num1" #num1="ngModel" [(ngModel)]="calculo.num2">
     </p>
     <input type="submit" value="Guardar" [disabled]="!calcuForm.form.valid">
   </form>
+  <button class="btn btn-primary" (click)="changeSuma()">+</button>
+  <button class="btn btn-primary" (click)="changeResta()">-</button>
+  <button class="btn btn-primary" (click)="changeProd()">*</button>
+  <button class="btn btn-primary" (click)="changeDiv()">/</button>
+  <button class="btn btn-primary" (click)="changePot()">^</button>
+  <button class="btn btn-primary" (click)="changeSQRT()">sqrt</button>
+  
   <!--
   <div class="resultado" *ngIf="messages!=null">
       <div class="{{messages.status}}">{{messages.message}}</div>

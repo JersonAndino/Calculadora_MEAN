@@ -49,8 +49,7 @@ var controller={
     sqrt:function(req,res){
         var params=req.body;
         var num1 = parseFloat(params.num1);
-        var num2 = parseFloat(params.num2);
-        console.log(num1**(1/2));
+        console.log(Math.sqrt(num1));
     },
 }
 

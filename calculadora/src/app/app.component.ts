@@ -12,10 +12,12 @@ import { Calculo } from './models/calculo';
 export class AppComponent {
   title = 'calculadora';
   public calculo:Calculo;
+  public operacion:String;
   constructor(
     private _calcuService:CalculadoraService
   ){
     this.calculo=new Calculo(0,0);
+    this.operacion='+';
     //this.post();
     //this.get();
   }
@@ -62,7 +64,7 @@ export class AppComponent {
     );
   }
   potencia(){
-    this._calcuService.put(this.calculo).subscribe(
+    this._calcuService.potencia(this.calculo).subscribe(
       response=>{
         console.log(response);
       }
@@ -80,5 +82,63 @@ export class AppComponent {
         console.log(<any>error);
       }
     );
+  }
+  changeSuma(){
+    this.operacion='+';
+  }
+  changeResta(){
+    this.operacion='-';
+  }
+  changeProd(){
+    this.operacion='x';
+  }
+  changeDiv(){
+    this.operacion='/';
+  }
+  changePot(){
+    this.operacion='^';
+  }
+  changeSQRT(){
+    this.operacion='SQRT';
+  }
+  doOperacion(){
+    console.log(this.operacion);
+    switch(this.operacion){
+      case '+':{
+        this.post();
+        console.log("SUMA");
+        break;
+      }
+      case '-':{
+        this.get();
+        console.log("RESTA");
+
+        break;
+      }
+      case 'x':{
+        this.put();
+        console.log("PROD");
+
+        break;
+      }
+      case '/':{
+        this.delete();
+        console.log("DIV");
+
+        break;
+      }
+      case '^':{
+        this.potencia();
+        console.log("POT");
+
+        break;
+      }
+      case 'SQRT':{
+        this.patch();
+        console.log("SQ");
+
+        break;
+      }
+    }
   }
 }
