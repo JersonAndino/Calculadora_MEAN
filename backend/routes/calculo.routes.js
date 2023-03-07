@@ -4,7 +4,7 @@ var router=express.Router();
 var CalculosController=require('../controllers/calculo.controller');
 
 router.post('/',CalculosController.suma);
-router.get('/',CalculosController.resta);
+router.get('/:calculos',CalculosController.resta);
 router.put('/',CalculosController.producto);
 router.delete('/',CalculosController.division);
 router.purge('/',CalculosController.potencia);
