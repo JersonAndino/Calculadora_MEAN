@@ -98,16 +98,18 @@ var controller={
     sqrt:function(req,res){
         var params=req.body;
         var num1 = parseFloat(params.num1);
-        console.log(Math.sqrt(num1));
 
         var calculo=new Calculo();
         var cadena="sqrt("+num1.toString()+")";
         var resultado=Math.sqrt(num1);
         calculo.calculo=cadena;
         calculo.resultado=resultado;
+        if (!calculo.resultado){
+            calculo.resultado='undefined';
+        }
         calculo.save();
 
-        return res.status(402).send({result:resultado});
+        return res.status(402).send({result:calculo.resultado});
     },
     getHistory:function(req,res){
         Calculo.find({}).sort().exec()
