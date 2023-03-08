@@ -21,6 +21,7 @@ post(calculo:Calculo):Observable<any>{
     let params=JSON.stringify(calculo);
     //console.log(params);
     let headers=new HttpHeaders().set('Content-Type','application/json');
+    headers.append('params','jaja');
     //headers.set('params',campos);
     return this._http.post(this.url,params,{headers:headers});
 }

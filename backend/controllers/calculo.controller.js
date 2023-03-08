@@ -10,6 +10,7 @@ var controller={
         var params=req.body;
         var num1 = parseFloat(params.num1);
         var num2 = parseFloat(params.num2);
+        //console.log(req.params);
         //console.log(num1+num2);
         var calculo=new Calculo();
         var cadena=num1.toString()+" + "+num2.toString();
@@ -21,7 +22,6 @@ var controller={
         //return res.status(200).send({resultado:num1+num2});
     },
     resta:function(req,res){
-        console.log("RESTA BACK");
         var params=req.params.calculos;
         var campos=params.split(',');
         //var num1 = parseFloat(params.num1);
