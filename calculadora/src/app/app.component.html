@@ -1,32 +1,51 @@
 
 <div class="container">
-  <h1>REGISTRO DE DATOS</h1>
-  <form name="calcuForm" #calcuForm="ngForm" (ngSubmit)="doOperacion()" >
-    <div >
-      <p>
-        <span></span>
-        <input type="text" name="num1" #num1="ngModel" [(ngModel)]="calculo.num1">
-      </p>
-      <h1><b>{{operacion}}</b></h1>
-      <p>
-        <span></span>
-        <input type="text" name="num1" #num1="ngModel" [(ngModel)]="calculo.num2">
-      </p>
-    </div>   
-    <input type="submit" value="Guardar" [disabled]="!calcuForm.form.valid">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="calculadora-box">
+        <div class="datos-box">
+        <h1>REGISTRO DE DATOS</h1>
+        <form name="calcuForm" #calcuForm="ngForm">
+          <div style="display:flex; flex-wrap:wrap">
+            <div style="width:40%;">
+              <span></span>
+              <input type="text" name="num1" #num1="ngModel" [(ngModel)]="calculo.num1" style="width:100%;">
+            </div>
+            <div style="width:20%;" class="text-center">
+              <h1 style="width:100%;"><b>{{operacion}}</b></h1>
+            </div>
+            <div style="width:40%;">
+              <span></span>
+              <input type="text" name="num1" #num1="ngModel" [(ngModel)]="calculo.num2" style="width:100%;">
+            </div>
+          </div>   
+          <!--<input type="submit" value="=" [disabled]="!calcuForm.form.valid">-->
+        </form>
+        </div>
+      
+        <div class="buttons-box">
+          <div><button class="btn btn-primary" (click)="suma()">+</button></div>
+          <div><button class="btn btn-primary" (click)="resta()">-</button></div>
+          <div><button class="btn btn-primary" (click)="producto()">*</button></div>
+          <div><button class="btn btn-primary" (click)="division()">/</button></div>
+          <div><button class="btn btn-primary" (click)="potencia()">^</button></div>
+          <div><button class="btn btn-primary" (click)="raiz()">SQRT</button></div>
+      </div>
 
-  </form>
-  <button class="btn btn-primary" (click)="changeSuma()">+</button>
-  <button class="btn btn-primary" (click)="changeResta()">-</button>
-  <button class="btn btn-primary" (click)="changeProd()">*</button>
-  <button class="btn btn-primary" (click)="changeDiv()">/</button>
-  <button class="btn btn-primary" (click)="changePot()">^</button>
-  <button class="btn btn-primary" (click)="changeSQRT()">sqrt</button>
-  
   <!--
   <div class="resultado" *ngIf="messages!=null">
       <div class="{{messages.status}}">{{messages.message}}</div>
   </div>
   -->
+      <div *ngIf="resultado!=null"> = {{resultado}}</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div *ngFor="let calculo of historial" class="history-item">
+        <div>{{calculo.calculo}}</div>
+        <div class="text-end"> = {{calculo.resultado}}</div>
+      </div>
+    </div>
   </div>
-  <div>{{resultado}}</div>
+</div>
+  

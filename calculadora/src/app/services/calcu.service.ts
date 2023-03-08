@@ -59,4 +59,11 @@ patch(calculo:Calculo):Observable<any>{
     //headers.set('params',campos);
     return this._http.patch(this.url,params,{headers:headers});
 }
+getHistory():Observable<any>{
+    //let params=JSON.stringify(calculo);
+    //console.log(params);
+    let headers=new HttpHeaders().set('Content-Type','application/json');
+    //headers.set('params',campos);
+    return this._http.get(this.url,{headers:headers});
+}
 }

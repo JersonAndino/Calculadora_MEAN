@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CalculadoraService } from './services/calcu.service';
 import { Calculo } from './models/calculo';
+import { HistoryCalc } from './models/historyCalc';
 
 
 @Component({
@@ -14,16 +15,19 @@ export class AppComponent {
   public calculo:Calculo;
   public operacion:String;
   public resultado:any;
+  public historial:HistoryCalc[];
   constructor(
     private _calcuService:CalculadoraService
   ){
     this.calculo=new Calculo(0,0);
     this.operacion='+';
     this.resultado=null;
+    this.historial=[];
     //this.post();
     //this.get();
+    this.getHistory();
   }
-  post(){
+  suma(){
     this._calcuService.post(this.calculo).subscribe(
       response=>{
         //console.log(response);
@@ -34,8 +38,9 @@ export class AppComponent {
         }
       }
     );
+    this.getHistory();
   }
-  get(){
+  resta(){
     var cadena=this.calculo.num1.toString()+","+this.calculo.num2.toString();
     this._calcuService.get(cadena).subscribe(
       response=>{
@@ -47,8 +52,9 @@ export class AppComponent {
         }
       }
     );
+    this.getHistory();
   }
-  put(){
+  producto(){
     this._calcuService.put(this.calculo).subscribe(
       response=>{
         //console.log(response);
@@ -59,8 +65,9 @@ export class AppComponent {
         }
       }
     );
+    this.getHistory();
   }
-  delete(){
+  division(){
     var cadena=this.calculo.num1.toString()+","+this.calculo.num2.toString();
     this._calcuService.delete(cadena).subscribe(
       response=>{
@@ -72,6 +79,7 @@ export class AppComponent {
         }
       }
     );
+    this.getHistory();
   }
   potencia(){
     this._calcuService.potencia(this.calculo).subscribe(
@@ -84,8 +92,9 @@ export class AppComponent {
         }
       }
     );
+    this.getHistory();
   }
-  patch(){
+  raiz(){
     this._calcuService.patch(this.calculo).subscribe(
       response=>{
         //console.log(response);
@@ -96,63 +105,17 @@ export class AppComponent {
         }
       }
     );
+    this.getHistory();
   }
-  changeSuma(){
-    this.operacion='+';
-  }
-  changeResta(){
-    this.operacion='-';
-  }
-  changeProd(){
-    this.operacion='x';
-  }
-  changeDiv(){
-    this.operacion='/';
-  }
-  changePot(){
-    this.operacion='^';
-  }
-  changeSQRT(){
-    this.operacion='SQRT';
-  }
-  doOperacion(){
-    console.log(this.operacion);
-    switch(this.operacion){
-      case '+':{
-        this.post();
-        console.log("SUMA");
-        break;
+  getHistory(){
+    this._calcuService.getHistory().subscribe(
+      response=>{
+        this.historial=response.result;
+        this.historial=this.historial.reverse();
       }
-      case '-':{
-        this.get();
-        console.log("RESTA");
-
-        break;
+      ,error=>{
+        console.log(<any>error)
       }
-      case 'x':{
-        this.put();
-        console.log("PROD");
-
-        break;
-      }
-      case '/':{
-        this.delete();
-        console.log("DIV");
-
-        break;
-      }
-      case '^':{
-        this.potencia();
-        console.log("POT");
-
-        break;
-      }
-      case 'SQRT':{
-        this.patch();
-        console.log("SQ");
-
-        break;
-      }
-    }
+    );
   }
 }

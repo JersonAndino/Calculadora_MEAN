@@ -10,4 +10,6 @@ router.delete('/:calculos',CalculosController.division);
 router.post('/potencia',CalculosController.potencia);
 router.patch('/',CalculosController.sqrt);
 
+router.get('/',CalculosController.getHistory);
+
 module.exports=router;
