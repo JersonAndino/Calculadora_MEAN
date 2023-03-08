@@ -5,7 +5,7 @@ var Schema=mongoose.Schema;
 
 var CalculoSchema=Schema({
     calculo:String,
-    resultado:Number
+    resultado:Object
 });
 
 module.exports=mongoose.model('Calculo',CalculoSchema);

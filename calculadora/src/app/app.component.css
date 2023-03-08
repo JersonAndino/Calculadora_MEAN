@@ -25,6 +25,23 @@
     width: 100%;
 }
 .history-item{
-    width: 100px;
+    width: 250px;
     margin: auto;
+    font-weight: bold;
+    border: 1px solid rgb(74, 74, 74);
+    border-left: none;
+    border-right: none;
+    padding-right: 20px;
+    background-color: transparent;
+}
+.history{
+    margin: auto;
+    width: 250px;
+    margin: 50px 20px 50px 20px;
+    height: 500px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.history-item .calculo{
+    color: rgb(74, 74, 74);
 }

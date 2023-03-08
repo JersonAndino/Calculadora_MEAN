@@ -69,10 +69,14 @@ var controller={
         var resultado=num1/num2;
         calculo.calculo=cadena;
         calculo.resultado=resultado;
+        if (!calculo.resultado){
+            calculo.resultado='undefined';
+        }
         calculo.save();
+        
 
         //console.log(num1/num2);
-        return res.status(402).send({result:resultado});
+        return res.status(402).send({result:calculo.resultado});
 
     },
     potencia:function(req,res){

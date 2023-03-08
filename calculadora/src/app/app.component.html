@@ -41,9 +41,11 @@
       </div>
     </div>
     <div class="col-md-4">
+      <div class="history">
       <div *ngFor="let calculo of historial" class="history-item">
-        <div>{{calculo.calculo}}</div>
-        <div class="text-end"> = {{calculo.resultado}}</div>
+        <div class="calculo">{{calculo.calculo}}</div>
+        <div class=" resultado text-end"> = {{calculo.resultado}}</div>
+      </div>
       </div>
     </div>
   </div>
