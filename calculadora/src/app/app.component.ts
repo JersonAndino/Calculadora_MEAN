@@ -13,21 +13,25 @@ export class AppComponent {
   title = 'calculadora';
   public calculo:Calculo;
   public operacion:String;
+  public resultado:any;
   constructor(
     private _calcuService:CalculadoraService
   ){
     this.calculo=new Calculo(0,0);
     this.operacion='+';
+    this.resultado=null;
     //this.post();
     //this.get();
   }
   post(){
     this._calcuService.post(this.calculo).subscribe(
       response=>{
-        console.log(response);
+        //console.log(response);
       }
       ,error=>{
-        console.log(<any>error);
+        if(<any>error.status==402){
+          this.resultado=<any>error.error.result;
+        }
       }
     );
   }
@@ -35,20 +39,24 @@ export class AppComponent {
     var cadena=this.calculo.num1.toString()+","+this.calculo.num2.toString();
     this._calcuService.get(cadena).subscribe(
       response=>{
-        console.log(response);
+        //console.log(response);
       }
       ,error=>{
-        console.log(<any>error);
+        if(<any>error.status==402){
+          this.resultado=<any>error.error.result;
+        }
       }
     );
   }
   put(){
     this._calcuService.put(this.calculo).subscribe(
       response=>{
-        console.log(response);
+        //console.log(response);
       }
       ,error=>{
-        console.log(<any>error);
+        if(<any>error.status==402){
+          this.resultado=<any>error.error.result;
+        }
       }
     );
   }
@@ -56,30 +64,36 @@ export class AppComponent {
     var cadena=this.calculo.num1.toString()+","+this.calculo.num2.toString();
     this._calcuService.delete(cadena).subscribe(
       response=>{
-        console.log(response);
+        //console.log(response);
       }
       ,error=>{
-        console.log(<any>error);
+        if(<any>error.status==402){
+          this.resultado=<any>error.error.result;
+        }
       }
     );
   }
   potencia(){
     this._calcuService.potencia(this.calculo).subscribe(
       response=>{
-        console.log(response);
+        //console.log(response);
       }
       ,error=>{
-        console.log(<any>error);
+        if(<any>error.status==402){
+          this.resultado=<any>error.error.result;
+        }
       }
     );
   }
   patch(){
     this._calcuService.patch(this.calculo).subscribe(
       response=>{
-        console.log(response);
+        //console.log(response);
       }
       ,error=>{
-        console.log(<any>error);
+        if(<any>error.status==402){
+          this.resultado=<any>error.error.result;
+        }
       }
     );
   }
